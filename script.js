@@ -1,7 +1,12 @@
 function debounce(func, delay, immediate = false) {
   let timerId;
-  if(immediate===true)
-	  func();
+  if(immediate===true){
+	  return function() {
+    const context = this;
+    const args = arguments;
+		  func.apply(context,args);
+	  }
+  }
   return function() {
     const context = this;
     const args = arguments;
